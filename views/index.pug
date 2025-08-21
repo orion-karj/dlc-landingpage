@@ -93,7 +93,7 @@ html(lang="he" dir="rtl")
         padding: 5rem 0;
         opacity: 1;
         transform: translateY(0);
-        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         will-change: opacity, transform;
       }
 
@@ -118,7 +118,7 @@ html(lang="he" dir="rtl")
       .program-card {
         opacity: 1;
         transform: translateY(0);
-        transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         transition-delay: calc(var(--card-index, 0) * 0.1s);
       }
 
@@ -131,13 +131,13 @@ html(lang="he" dir="rtl")
       .activity-card {
         opacity: 1;
         transform: translateX(0);
-        transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         transition-delay: calc(var(--card-index, 0) * 0.15s);
       }
 
       .activity-card.animate {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateY(0);
       }
 
       /* Navigation */
@@ -645,6 +645,15 @@ html(lang="he" dir="rtl")
         border: 1px solid var(--gray-200);
         box-shadow: var(--shadow);
         transition: all 0.3s ease;
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition-delay: calc(var(--item-index, 0) * 0.1s);
+      }
+
+      .summary-item.animate {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .summary-item:hover {
@@ -754,6 +763,15 @@ html(lang="he" dir="rtl")
         color: var(--gray-700);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         border: 2px solid transparent;
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition-delay: calc(var(--partner-index, 0) * 0.1s);
+      }
+
+      .partner-card.animate {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .partner-card:hover {
@@ -1652,6 +1670,18 @@ html(lang="he" dir="rtl")
         // Observe activity cards with staggered delays
         document.querySelectorAll('.activity-card').forEach((card, index) => {
           card.style.setProperty('--card-index', index);
+          cardObserver.observe(card);
+        });
+
+        // Observe summary items with staggered delays
+        document.querySelectorAll('.summary-item').forEach((item, index) => {
+          item.style.setProperty('--item-index', index);
+          cardObserver.observe(item);
+        });
+
+        // Observe partner cards with staggered delays
+        document.querySelectorAll('.partner-card').forEach((card, index) => {
+          card.style.setProperty('--partner-index', index);
           cardObserver.observe(card);
         });
 
