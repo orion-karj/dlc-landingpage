@@ -1,0 +1,1749 @@
+doctype html
+html(lang="he" dir="rtl")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title דרך לחיים - מיזם חינוכי-ספורטיבי בהובלת עמית קורקוש
+    meta(name="description" content="פרויקט דרך לחיים - שילוב ספורט, חינוך וערכים עם עמית קורקוש. חיזוק ביטחון עצמי וכלים לחיים לילדים ונוער")
+    link(href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet")
+    
+    style.
+      :root {
+        --primary: #6366f1;
+        --secondary: #8b5cf6;
+        --accent: #06d6a0;
+        --warning: #f59e0b;
+        --success: #10b981;
+        --dark: #0f172a;
+        --gray-900: #111827;
+        --gray-800: #1f2937;
+        --gray-700: #374151;
+        --gray-600: #4b5563;
+        --gray-500: #6b7280;
+        --gray-400: #9ca3af;
+        --gray-300: #d1d5db;
+        --gray-200: #e5e7eb;
+        --gray-100: #f3f4f6;
+        --gray-50: #f9fafb;
+        --white: #ffffff;
+
+        --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--success) 100%);
+        --gradient-hero: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+        --blur: blur(16px);
+        --backdrop-blur: blur(12px);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family: 'Assistant', 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        color: var(--gray-800);
+        background: var(--white);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Utilities */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: var(--backdrop-blur);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .floating-card {
+        background: var(--white);
+        border-radius: 24px;
+        box-shadow: var(--shadow-xl);
+        border: 1px solid var(--gray-100);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+      }
+
+      .floating-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-2xl);
+      }
+
+      .section {
+        padding: 5rem 0;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .section.animate {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Navigation */
+      .nav {
+        position: fixed;
+        top: 1rem;
+        right: 50%;
+        transform: translateX(50%);
+        z-index: 1000;
+        backdrop-filter: var(--backdrop-blur);
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50px;
+        padding: 0.75rem 2rem;
+        box-shadow: var(--shadow-lg);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+        display: flex;
+        justify-content: center;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        align-items: center;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: var(--gray-600);
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 0.5rem 0;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--primary);
+      }
+
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--gradient-primary);
+        transition: width 0.3s ease;
+        border-radius: 1px;
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        background-image: url('/assets/bg3.png');
+        background-size: cover;           /* scale to fill */
+        background-position: center;      /* center the image */
+        background-repeat: no-repeat;     /* don't tile */
+        background-attachment: fixed;     /* optional: parallax-like */
+        background-color: #222;           /* fallback color while image loads */
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        33% { transform: translateY(-10px) rotate(1deg); }
+        66% { transform: translateY(5px) rotate(-1deg); }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        color: var(--white);
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(66, 66, 66, 0.2);
+        backdrop-filter: var(--backdrop-blur);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50px;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 2rem;
+        animation: fadeInUp 1s ease 0.3s both;
+      }
+
+      .hero h1 {
+        font-size: clamp(1.5rem, 4vw, 3rem);
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+        animation: fadeInUp 1s ease 0.6s both;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        color: #272727e4;
+      }
+
+      .hero .subtitle {
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
+        font-weight: 400;
+        margin-bottom: 3rem;
+        opacity: 0.9;
+        animation: fadeInUp 1s ease 0.9s both;
+        line-height: 1.6;
+        color: #191919ff;
+      }
+
+      .cta-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        animation: fadeInUp 1s ease 1.2s both;
+      }
+
+      .cta-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        background: var(--white);
+        color: var(--primary);
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      }
+
+      .cta-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        background: var(--gray-50);
+      }
+
+      .cta-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        background: rgba(66, 66, 66, 0.2);
+        color: var(--white);
+        text-decoration: none;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        backdrop-filter: var(--backdrop-blur);
+      }
+
+      .cta-secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.5);
+        transform: translateY(-2px);
+      }
+
+      /* ------------------------------------------- */
+
+      /* Media Query for screens up to 1440px wide (e.g., 13-inch screens) */
+      @media (max-width: 1440px) {
+        .hero-content {
+          max-width: 600px;
+          padding: 0 1rem;
+        }
+
+        .hero-badge {
+          padding: 0.5rem 1rem;
+          font-size: 0.8rem;
+          margin-top: 4rem;
+        }
+        
+        .hero h1 {
+          font-size: clamp(1.3rem, 2.3vw, 1.8rem);
+          margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+          font-size: clamp(1rem, 1.8vw, 1.3rem);
+          margin-bottom: 2rem;
+        }
+
+        .cta-primary,
+        .cta-secondary {
+          padding: 0.8rem 1.5rem;
+          font-size: 1rem;
+        }
+      }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+      /* About Section */
+      .about {
+        background: var(--gray-50);
+      }
+
+      .about-container {
+        display: grid;
+        grid-template-columns: 400px 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .about-image-wrapper {
+        position: relative;
+      }
+
+      .about-image {
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 32px;
+        object-fit: cover;
+        box-shadow: var(--shadow-2xl);
+        transition: all 0.4s ease;
+      }
+
+      .about-image:hover {
+        transform: scale(1.02);
+      }
+
+      .about-content {
+        padding: 1rem 0;
+      }
+
+      .section-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--gradient-primary);
+        color: var(--white);
+        border-radius: 50px;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+      }
+
+      .about-text {
+        font-size: 1.1rem;
+        color: var(--gray-600);
+        margin-bottom: 2rem;
+        line-height: 1.8;
+      }
+
+      .about-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 1.5rem;
+        background-color: #aaaaaa2a;
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        transition: all 0.3s ease;
+      }
+
+      .stat-item:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .stat-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+        display: block;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: var(--gray-600);
+        margin-top: 0.5rem;
+      }
+
+      .quote-card {
+        background: var(--gradient-primary);
+        color: var(--white);
+        padding: 2rem;
+        border-radius: 24px;
+        text-align: center;
+        box-shadow: var(--shadow-xl);
+        position: relative;
+      }
+
+      .quote-card::before {
+        content: '"';
+        position: absolute;
+        top: -1rem;
+        right: 1rem;
+        font-size: 6rem;
+        font-weight: 700;
+        opacity: 0.2;
+        line-height: 1;
+      }
+
+      .quote-text {
+        font-size: 1.3rem;
+        font-weight: 500;
+        font-style: italic;
+      }
+
+      /* Program Section */
+      .program {
+        background: var(--white);
+      }
+
+      .program-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+        width: 100%;
+      }
+
+      @media(min-width: 1056px) {
+        .program-card:nth-child(4) {
+          grid-column: 1 / span 3;
+        }
+
+        .program-card:nth-child(5) {
+          grid-column: 1 / span 3;
+        }
+      }
+
+      .program-card {
+        background-color: #aeaaaa2a;
+        padding: 2.5rem 2rem;
+        border-radius: 24px;
+        box-shadow: var(--shadow-lg);
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid var(--gray-200);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .program-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-primary);
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+      }
+
+      .program-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .program-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-2xl);
+      }
+
+      .program-icon {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 1.5rem;
+        background: var(--gradient-primary);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .program-card:hover .program-icon {
+        transform: scale(1.1);
+      }
+
+      .program-icon svg {
+        width: 32px;
+        height: 32px;
+        color: var(--white);
+      }
+
+      .program-card h4 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 1rem;
+      }
+
+      .program-card p {
+        color: var(--gray-600);
+        line-height: 1.6;
+      }
+
+      .program-summary {
+        background: var(--gray-50);
+        padding: 3rem;
+        border-radius: 32px;
+        margin-top: 3rem;
+      }
+
+      .summary-title {
+        font-size: 2rem;
+        font-weight: 700;
+        text-align: center;
+        color: var(--dark);
+        margin-bottom: 3rem;
+      }
+
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 2rem;
+      }
+
+      .summary-item {
+        background-color: #aaaaaa2a;
+        padding: 2rem;
+        border-radius: 20px;
+        border: 1px solid var(--gray-200);
+        box-shadow: var(--shadow);
+        transition: all 0.3s ease;
+      }
+
+      .summary-item:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .summary-item h5 {
+        color: var(--primary);
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      /* Activities Section */
+      .activities {
+        background: var(--gray-50);
+      }
+
+      .activities-grid {
+        display: grid;
+        gap: 2rem;
+      }
+
+      .activity-card {
+        background-color: #aaaaaa2a;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+        transition: all 0.4s ease;
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem;
+      }
+
+      .activity-card:hover {
+        transform: translateX(8px);
+        box-shadow: var(--shadow-2xl);
+      }
+
+      .activity-icon-wrapper {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #32CD32 0%, #006400 100%);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+      }
+
+      .activity-card:nth-child(2) .activity-icon-wrapper {
+        background: linear-gradient(135deg, #8A2BE2 0%, #4B0082 100%);
+
+
+      }
+
+      .activity-card:nth-child(3) .activity-icon-wrapper {
+        background: linear-gradient(135deg, #FFA500 0%, #FF8C00 100%);
+      }
+
+      .activity-card:nth-child(4) .activity-icon-wrapper {
+        background: linear-gradient(135deg, #1E90FF 0%, #0000CD 100%);
+
+      }
+
+      .activity-icon-wrapper svg {
+        width: 40px;
+        height: 40px;
+        color: var(--white);
+      }
+
+      .activity-content h4 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 1rem;
+      }
+
+      .activity-content p {
+        color: var(--gray-600);
+        line-height: 1.7;
+      }
+
+      /* Partnerships Section */
+      .partnerships {
+        background: var(--white);
+      }
+
+      .partners-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .partner-card {
+        background: #aaaaaa2a;
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+        text-align: center;
+        font-weight: 600;
+        color: var(--gray-700);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2px solid transparent;
+      }
+
+      .partner-card:hover {
+        background: var(--primary);
+        color: var(--white);
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--primary);
+      }
+
+      /* Contact Section */
+      .contact {
+        background: var(--dark);
+        color: var(--white);
+      }
+
+      .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+      }
+
+      .contact-form {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: var(--backdrop-blur);
+        padding: 3rem;
+        border-radius: 32px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .form-group {
+        margin-bottom: 2rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.75rem;
+        font-weight: 500;
+        color: var(--gray-200);
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 1rem 1.25rem;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        font-size: 1rem;
+        font-family: inherit;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--white);
+        transition: all 0.3s ease;
+        backdrop-filter: var(--backdrop-blur);
+      }
+
+      .form-group input::placeholder,
+      .form-group textarea::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 0 0 4px rgba(6, 214, 160, 0.1);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 1rem;
+        background: var(--gradient-accent);
+        color: var(--white);
+        border: none;
+        border-radius: 16px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 32px rgba(6, 214, 160, 0.3);
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 40px rgba(6, 214, 160, 0.4);
+      }
+
+      .contact-info h3 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        background: var(--gradient-accent);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .contact-description {
+        font-size: 1.2rem;
+        color: var(--gray-300);
+        margin-bottom: 3rem;
+        line-height: 1.7;
+      }
+
+      .contact-items {
+        space: 2rem 0;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .contact-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(8px);
+      }
+
+      .contact-icon {
+        width: 48px;
+        height: 48px;
+        background: var(--gradient-accent);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 1.5rem;
+        flex-shrink: 0;
+      }
+
+      .contact-icon svg {
+        width: 24px;
+        height: 24px;
+        color: var(--white);
+      }
+
+      .contact-details h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--white);
+        margin-bottom: 0.25rem;
+      }
+
+      .contact-details p {
+        color: var(--gray-400);
+        font-size: 1rem;
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--gray-900);
+        color: var(--gray-400);
+        padding: 2rem 0;
+        text-align: center;
+        border-top: 1px solid var(--gray-800);
+      }
+
+      /* Floating Action Button */
+      .fab {
+        position: fixed;
+        bottom: 2rem;
+        left: 2rem;
+        width: 60px;
+        height: 60px;
+        background: var(--gradient-primary);
+        color: var(--white);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--shadow-xl);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        transform: translateY(100px);
+        z-index: 1000;
+        text-decoration: none;
+      }
+
+      .fab.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .fab:hover {
+        transform: translateY(-4px) scale(1.1);
+        box-shadow: var(--shadow-2xl);
+      }
+
+      .fab svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .about-container {
+          grid-template-columns: 300px 1fr;
+          gap: 3rem;
+        }
+        
+        .contact-container {
+          gap: 3rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 1rem;
+        }
+
+        .nav {
+          right: 1rem;
+          left: 1rem;
+          transform: none;
+          padding: 0.5rem 1rem;
+        }
+
+        .nav-links {
+          gap: 1rem;
+          font-size: 0.85rem;
+        }
+
+        .section {
+          padding: 3rem 0;
+        }
+
+        .hero {
+          padding: 0 1rem;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .about-container {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 2rem;
+        }
+
+        .about-image-wrapper {
+          max-width: 300px;
+          margin: 0 auto;
+        }
+
+        .about-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-container {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .activity-card {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 1rem;
+        }
+
+        .fab {
+          bottom: 1rem;
+          left: 50%;
+          transform: translateX(-50%) translateY(100px);
+        }
+
+        .fab.show {
+          transform: translateX(-50%) translateY(0);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .program-grid,
+        .activities-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .partners-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .summary-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-form {
+          padding: 2rem;
+        }
+      }
+
+      .spinner {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 2px solid #fff;
+        border-top: 2px solid transparent;
+        border-radius: 50%;
+        margin-left: 6px;
+        animation: spin 0.6s linear infinite;
+        vertical-align: middle;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .form-success {
+        text-align: center;
+        padding: 2rem;
+        animation: fadeIn 0.4s ease;
+      }
+
+      .form-success h2 {
+        color: #0cc68f;
+        margin-top: 1rem;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+      }
+
+
+  body
+    // Navigation
+    nav.nav
+      ul.nav-links
+        li: a.nav-link(href="#home") דף הבית
+        li: a.nav-link(href="#about") אודותיי
+        li: a.nav-link(href="#program") התוכנית
+        li: a.nav-link(href="#activities") פעילויות
+        li: a.nav-link(href="#contact") צור קשר
+
+    // Hero Section
+    section.hero#home
+      .container
+        .hero-content
+          .hero-badge
+            span מייזם ייחודי בחינוך ספורטיבי
+            svg(width="16" height="16" viewBox="0 0 24 24" fill="currentColor")
+              path(d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z")
+
+          
+          h1 ברוכים הבאים לפרוייקט 
+          h1(style="color: #354e83c3; font-size: 5rem;") "דרך לחיים" 
+          h1  מיזם ייחודי ששם את הילד במרכז
+          
+          p.subtitle שילוב ספורט עם חינוך וערכים. שמי עמית קורקוש, מחנך, מאמן ומרצה עם ניסיון של מעל 10 שנים בעבודה עם ילדים ונוער במסגרות חינוכיות וספורטיביות. במהלך השנים יצרתי גישה מיוחדת שמצליחה לגעת בילדים שלא מצאו את מקומם – דרך חיבור אישי, עבודה מקצועית, והרבה נשמה
+          
+          .cta-buttons
+            a.cta-primary(href="#contact")
+              span הצטרפו עכשיו
+              svg(width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+                path(d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z")
+            
+            a.cta-secondary(href="#about")
+              span למידע נוסף
+              svg(
+                width="24px"
+                height="24px"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                color="#ffffffff"
+              )
+                path(
+                  d="M12 8V16M12 16L15.5 12.5M12 16L8.5 12.5"
+                  stroke="#ffffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                )
+                path(
+                  d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                  stroke="#ffffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                )
+
+    // About Section
+    section.section.about#about
+      .container
+        .about-container
+          .about-image-wrapper
+            img.about-image(src="/assets/pfp2.jpeg" alt="עמית קורקוש - מחנך ומאמן")
+          
+          .about-content
+            .section-badge
+              span מי אני
+              svg(width="16" height="16" viewBox="0 0 24 24" fill="currentColor")
+                path(d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z")
+            
+            h2.section-title מחנך, מאמן ומרצה מנוסה
+            
+            p.about-text 
+              | אני עמית קורקוש, איש חינוך מנוסה עם למעלה מעשור של עבודה עם ילדים ונוער. 
+              | בעל תואר ראשון בחינוך גופני והתעמלות, ותואר שני בניהול וארגון במערכות חינוך.
+            p.about-text
+              | אני מתמחה בעבודה עם ילדים בקשיים התנהגותיים וחברתיים, ומאמין באמונה שלמה 
+              | כי כל ילד יכול להצליח בתנאים הנכונים. אני מזמין אתכם לקחת חלק באחת מהתוכניות שלנו – חוגים, הרצאות, סדנאות או שיתופי פעולה, ולגלות איך ספורט יכול להפוך לכלי לחיים.
+            p.about-text
+              | מנצלים את תקציב הגפ”ן – ומעניקים לתלמידים חוויה עם ערך לחיים! 
+              | משרד החינוך מעניק לכל בית ספר תקציב במסגרת תוכנית הגפ”ן, שמיועד לפעילויות העשרה ייחודיות. 
+              | זוהי ההזדמנות שלכם להזמין פעילות שמשלבת ספורט, ערכים וכלים לחיים – בדיוק מה שהתלמידים שלכם צריכים.
+            .about-stats
+              .stat-item
+                span.stat-number 10+
+                span.stat-label שנות ניסיון
+              .stat-item
+                span.stat-number 500+
+                span.stat-label ילדים בתוכנית
+
+            .quote-card
+              .quote-text אין ילד רע – יש ילד שרע לו
+
+    // Program Section
+    section.section.program#program
+      .container
+        .section-badge
+          span התוכנית שלי
+          svg(width="19px" height="19px" viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg" color="#ffffffff")
+            path(
+              d="M13 10V3L5 14H11V21L19 10H13Z"
+              stroke="#ffffffff"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            )
+
+        
+        h2.section-title תוכנית "דרך לחיים" – העצמה דרך ספורט
+        
+        p.about-text(style="text-align: center; margin-bottom: 3rem;")
+          | תוכנית חינוכית-ספורטיבית שנתית לילדים, המיועדת לחיזוק הביטחון העצמי, פיתוח כישורי חיים, שיפור מיומנויות תקשורת והתמודדות עם אתגרים – דרך פעילות גופנית חווייתית. החזון: לאמן ילדים לא רק בגוף – אלא גם בלב ובשכל. לתת להם כלים שילוו אותם לכל החיים.
+        
+        .program-grid
+          .program-card
+            .program-icon
+              svg(
+                width="24px"
+                height="24px"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                color="#ffffffff"
+              )
+                path(
+                  d="M12 8L15.8043 10.7639M12 8L8.1958 10.7639M12 8V5M15.8043 10.7639L14.3512 15.2361M15.8043 10.7639L18.5 9.5M14.3512 15.2361H9.64889M14.3512 15.2361L16 17.5M9.64889 15.2361L8.1958 10.7639M9.64889 15.2361L8 17.5M8.1958 10.7639L5.5 9.5M5.5 9.5L2.04938 13M5.5 9.5L4.5 5.38544M18.5 9.5L21.9506 13M18.5 9.5L19.5 5.38544M12 5L8.62434 2.58409M12 5L15.3757 2.58409M8 17.5L3.33782 17M8 17.5L10.5 21.8883M16 17.5L20.6622 17M16 17.5L13.5 21.8883M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z"
+                  stroke="#ffffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                )
+
+            h4 ספורט ככלי חינוכי
+            p משחקי כדור, אימוני כושר, אתגרים קבוצתיים. פיתוח קואורדינציה, שליטה בגוף, משמעת עצמית
+          
+          .program-card
+            .program-icon
+              svg(
+                width="24px"
+                height="24px"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                color="#ffffffff"
+              )
+                path(
+                  d="M3 21L13 11M18 6L15.5 8.5"
+                  stroke="#ffffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                )
+                path(
+                  d="M9.5 2L10.4453 4.55468L13 5.5L10.4453 6.44532L9.5 9L8.55468 6.44532L6 5.5L8.55468 4.55468L9.5 2Z"
+                  stroke="#ffffffff"
+                  stroke-width="1.5"
+                  stroke-linejoin="round"
+                )
+                path(
+                  d="M19 10L19.5402 11.4598L21 12L19.5402 12.5402L19 14L18.4598 12.5402L17 12L18.4598 11.4598L19 10Z"
+                  stroke="#ffffffff"
+                  stroke-width="1.5"
+                  stroke-linejoin="round"
+                )
+            h4 עבודה על ביטחון ודימוי עצמי
+            p תרגולים שמחזקים תחושת מסוגלות, עידוד הבעת רגשות ובניית תחושת "אני יכול"
+          
+          .program-card
+            .program-icon
+              svg(viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+                path(d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2")
+                circle(cx="9" cy="7" r="4")
+                path(d="M23 21v-2a4 4 0 0 0-3-3.87")
+                path(d="M16 3.13a4 4 0 0 1 0 7.75")
+            h4 מיומנויות חברתיות
+            p שיתוף פעולה, פתרון קונפליקטים, דינמיקה קבוצתית. דגש על כבוד, הקשבה, הכלה והובלה חיובית
+          
+          .program-card
+            .program-icon
+              svg(
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              )
+                path(
+                  stroke="white"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 9h.01M8.99 9H9m12 3a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM6.6 13a5.5 5.5 0 0 0 10.81 0H6.6Z"
+                )
+            h4 התמודדות עם כישלון והצלחה
+            p איך לא לוותר, איך לקום מנפילה, ואיך לחגוג הצלחות מתוך ענווה. הפיכת אתגר להזדמנות
+            
+          .program-card
+            .program-icon
+              svg(
+                width="16px"
+                height="16px"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                color="#ffffffff"
+              )
+                path(
+                  d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z"
+                  stroke="#ffffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                )
+            h4 שיח רגשי וערכי
+            p בכל מפגש מוקדש זמן קצר לשיח קבוצתי מונחה. נושאים: חברות, לחץ חברתי, אחריות, התמדה, כעסים, מנהיגות ועוד
+
+        .program-summary
+          h3.summary-title פרטי התוכנית
+          .summary-grid
+            .summary-item
+              h5 
+                svg(width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+                  path(d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2")
+                  circle(cx="9" cy="7" r="4")
+                  path(d="M23 21v-2a4 4 0 0 0-3-3.87")
+                  path(d="M16 3.13a4 4 0 0 1 0 7.75")
+                h3 קהל יעד
+              p ילדים בכיתות א'–ט', מותאם לפי גיל, רמת קושי והתפתחות אישית
+            
+            .summary-item
+              h5
+                svg(width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+                  rect(x="3" y="4" width="18" height="18" rx="2" ry="2")
+                  line(x1="16" y1="2" x2="16" y2="6")
+                  line(x1="8" y1="2" x2="8" y2="6")
+                  line(x1="3" y1="10" x2="21" y2="10")
+                h3 מבנה התוכנית
+              p מפגש שבועי אחד לכל קבוצה, משך כל מפגש: 45 דקות, מסגרת שנתית (ספטמבר–יוני). ניתן לשלב בבתי ספר, חוגי אחה"צ או תוכניות צהרון
+            
+            .summary-item
+              h5
+                svg(
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                )
+                  path(
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M4 4.5V19a1 1 0 0 0 1 1h15M7 14l4-4 4 4 5-5m0 0h-3.207M20 9v3.207"
+                  )
+
+                h3 מטרות עיקריות
+              p לחזק את הילד מבפנים – לא רק מבחוץ, לפתח כלים להתמודדות אישית וחברתית, להפוך את הספורט לכלי חינוכי אמיתי, ליצור חוויה משמעותית שמשאירה חותם
+            
+            .summary-item
+              h5
+                svg(width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+                  path(d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z")
+                  circle(cx="12" cy="10" r="3")
+                h3 איפה מתקיימת כיום
+              p מושב צופים, יישובים במועצה האזורית דרום השרון, בתי ספר, מועדוניות, חוגי אחה"צ
+
+    // Activities Section
+    section.section.activities#activities
+      .container
+        .section-badge
+          span תחומי פעילות
+          svg(
+            width="16px"
+            height="16px"
+            stroke-width="1.5"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            color="#ffffffff"
+          )
+            path(
+              d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z"
+              stroke="#ffffffff"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            )
+        
+        h2.section-title תחומי הפעילות שלי
+        
+        .activities-grid
+          .activity-card
+            .activity-icon-wrapper
+              svg(
+                width="24px"
+                height="24px"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                color="#ffffffff"
+              )
+                path(
+                  d="M7 12.5L10 15.5L17 8.5"
+                  stroke="#ffffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                )
+                path(
+                  d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                  stroke="#ffffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                )
+
+            .activity-content
+              h4 חוגי ספורט והעצמה לילדים
+              p פרויקט "דרך לחיים" – תוכנית שנתית לפיתוח ביטחון אישי • חוגי כדורגל מקצועיים – עם דגש על יסודות, גישה אישית ועבודה מנטלית • חוג ספורט אתגרי – קואורדינציה, כוח רצון ועמידות
+          
+          .activity-card
+            .activity-icon-wrapper
+              svg(
+                width="24px"
+                height="24px"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                color="#ffffffff"
+              )
+                path(
+                  d="M12 21V7C12 5.89543 12.8954 5 14 5H21.4C21.7314 5 22 5.26863 22 5.6V18.7143"
+                  stroke="#ffffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                )
+                path(
+                  d="M12 21V7C12 5.89543 11.1046 5 10 5H2.6C2.26863 5 2 5.26863 2 5.6V18.7143"
+                  stroke="#ffffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                )
+                path(
+                  d="M14 19L22 19"
+                  stroke="#ffffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                )
+                path(
+                  d="M10 19L2 19"
+                  stroke="#ffffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                )
+                path(
+                  d="M12 21C12 19.8954 12.8954 19 14 19"
+                  stroke="#ffffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                )
+                path(
+                  d="M12 21C12 19.8954 11.1046 19 10 19"
+                  stroke="#ffffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                )
+
+            .activity-content
+              h4 הרצאות והדרכות לאנשי חינוך
+              p ההרצאה: "אין ילד רע – יש ילד שרע לו" • למורים, מאמנים, מדריכים והורים • כלים פרקטיים לגישה נכונה לילדים
+          
+          .activity-card
+            .activity-icon-wrapper
+              svg(
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              )
+                path(
+                  stroke="white"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 20v-9l-4 1.125V20h4Zm0 0h8m-8 0V6.66667M16 20v-9l4 1.125V20h-4Zm0 0V7m0 0V4h4v3h-4ZM6 8l6-4 4 2.66667M11 9h2m-2 3h2"
+                )
+
+            .activity-content
+              h4 הפעלות בבתי ספר וקייטנות
+              p פעילות ספורטיבית עם תוכן חינוכי • מותאם לפי גיל ורמת קושי • מתאים גם לאירועים חד-פעמיים
+
+          .activity-card
+            .activity-icon-wrapper
+              svg(width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#ffffffff")
+                path(
+                  d="M14.2718 10.445L18 2M9.31612 10.6323L5 2M12.7615 10.0479L8.835 2M14.36 2L13.32 4.5M6 16C6 19.3137 8.68629 22 12 22C15.3137 22 18 19.3137 18 16C18 12.6863 15.3137 10 12 10C8.68629 10 6 12.6863 6 16Z"
+                  stroke="#ffffffff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                )
+
+
+            .activity-content
+              h4 פעילויות גפ"ן – ספורט וערכים
+              p חוגים, סדנאות והרצאות המשלבים ספורט, חיזוק ביטחון עצמי, עבודת צוות וכלים לחיים – מותאם במיוחד לתקציב הגפ”ן.
+
+
+    // Partnerships Section
+    section.section.partnerships#partnerships
+      .container
+        .section-badge
+          span שותפויות
+          svg(
+            width="24px"
+            height="24px"
+            stroke-width="1.5"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            color="#ffffffff"
+          )
+            path(
+              d="M14.2718 10.445L18 2M9.31612 10.6323L5 2M12.7615 10.0479L8.835 2M14.36 2L13.32 4.5M6 16C6 19.3137 8.68629 22 12 22C15.3137 22 18 19.3137 18 16C18 12.6863 15.3137 10 12 10C8.68629 10 6 12.6863 6 16Z"
+              stroke="#ffffffff"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            )
+        
+        h2.section-title שיתופי פעולה קודמים
+        
+        .partners-grid
+          .partner-card מועצה אזורית דרום השרון
+          .partner-card מושב צופים, כפר סבא, וישובים נוספים
+          .partner-card ליגת בתי הספר בשומרון
+          .partner-card חינוך פורמלי ובלתי פורמלי
+
+    // Contact Section
+    section.section.contact#contact
+      .container
+        .contact-container
+          .contact-form
+            h3 רוצים שנבנה משהו יחד?
+            p(style="margin-bottom: 2rem; opacity: 0.9;") להצטרפות לחוגים, לתיאום אימון או לשיתופי פעולה
+            form#contactForm
+              .form-group
+                label(for="fullName") שם מלא *
+                input(type="text" id="fullName" name="fullName" required placeholder="הכנס את שמך המלא")
+              
+              .form-group
+                label(for="phone") טלפון *
+                input(type="tel" id="phone" name="phone" required placeholder="054-1234567")
+              
+              .form-group
+                label(for="email") אימייל *
+                input(type="email" id="email" name="email" required placeholder="email@example.com")
+              
+              .form-group
+                label(for="message") תוכן ההודעה *
+                textarea(id="message" name="message" required placeholder="ספרו לי קצת על עצמכם ואיך אוכל לעזור...")
+              
+              button.submit-btn(type="submit") שלחו הודעה
+          
+          .contact-info
+            h3 בואו נכיר!
+            p.contact-description 
+              | אשמח לשמוע מכם ולעזור לילדכם למצוא את הדרך לחיים טובים יותר. 
+              | צרו קשר והבה נתחיל במסע משותף.
+
+            .contact-items
+              .contact-item
+                .contact-icon
+                  svg(viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+                    path(d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z")
+                .contact-details
+                  h4 טלפון
+                  p 054-4927583
+              
+              .contact-item
+                .contact-icon
+                  svg(viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+                    path(d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z")
+                    polyline(points="22,6 12,13 2,6")
+                .contact-details
+                  h4 אימייל
+                  p amitkorkus88@gmail.com
+              
+              .contact-item
+                .contact-icon
+                  svg(viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+                    path(d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z")
+                    circle(cx="12" cy="10" r="3")
+                .contact-details
+                  h4 מיקום
+                  p דרום השרון, ישראל
+
+    // Footer
+    footer.footer
+      .container
+        p © כל הזכויות שמורות לעמית קורקוש – דרך לחיים #{new Date().getFullYear()}
+
+    // Floating Action Button
+    a.fab(href="#contact")
+      svg(viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+        path(d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z")
+
+    script.
+      // Smooth scrolling for navigation
+      document.addEventListener('DOMContentLoaded', function() {
+        // Intersection Observer for animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate');
+            }
+          });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+          observer.observe(section);
+        });
+
+        // FAB visibility - Updated logic
+        const fab = document.querySelector('.fab');
+        const hero = document.querySelector('.hero');
+        const contactSection = document.querySelector('#contact') || document.querySelector('#contact-us') || document.querySelector('.contact');
+
+        function updateFabVisibility() {
+          // Check if hero section is visible
+          const heroRect = hero.getBoundingClientRect();
+          const heroVisible = heroRect.bottom > 0;
+          
+          // Check if contact section is visible
+          let contactVisible = false;
+          if (contactSection) {
+            const contactRect = contactSection.getBoundingClientRect();
+            // Consider contact section visible when it starts appearing in viewport
+            contactVisible = contactRect.top <= window.innerHeight * 0.8; // 80% of viewport height
+          }
+          
+          // Show FAB only if hero is not visible AND contact section is not visible
+          if (!heroVisible && !contactVisible) {
+            fab.classList.add('show');
+          } else {
+            fab.classList.remove('show');
+          }
+        }
+
+        // Use scroll event for more responsive FAB control
+        let fabTicking = false;
+        
+        function requestFabUpdate() {
+          if (!fabTicking) {
+            requestAnimationFrame(() => {
+              updateFabVisibility();
+              fabTicking = false;
+            });
+            fabTicking = true;
+          }
+        }
+
+        window.addEventListener('scroll', requestFabUpdate);
+        
+        // Initial check
+        updateFabVisibility();
+
+        // Active navigation link
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section[id]');
+
+        const navObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + id) {
+                  link.classList.add('active');
+                }
+              });
+            }
+          });
+        }, { threshold: 0.6 });
+
+        sections.forEach(section => {
+          navObserver.observe(section);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          });
+        });
+
+        // Form handling
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+          e.preventDefault();
+
+          const formData = new FormData(this);
+          const data = {};
+          for (let [key, value] of formData.entries()) {
+            data[key] = value.trim();
+          }
+
+          // Basic validation
+          if (!data.fullName || !data.phone || !data.email || !data.message) {
+            alert('אנא מלאו את כל השדות הנדרשים');
+            return;
+          }
+
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(data.email)) {
+            alert('אנא הזינו כתובת אימייל תקינה');
+            return;
+          }
+
+          const phoneRegex = /^05[0-9]-?[0-9]{7}$/;
+          if (!phoneRegex.test(data.phone.replace(/\s/g, ''))) {
+            alert('אנא הזינו מספר טלפון תקין (פלאפון)');
+            return;
+          }
+
+          const submitBtn = this.querySelector('.submit-btn');
+          const originalText = submitBtn.textContent;
+
+          // Add spinner
+          submitBtn.innerHTML = `
+            שולח...  <span class="spinner"></span>
+          `;
+          submitBtn.disabled = true;
+
+          try {
+            const response = await fetch('/contact', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            });
+
+            if (response.redirected) {
+              const url = new URL(response.url);
+              if (url.searchParams.get('success')) {
+                // Replace form with success message
+                this.outerHTML = `
+                  <div class="form-success">
+                    <?xml version="1.0" encoding="UTF-8"?><svg width="80px" height="80px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#0cc68f">
+                      <path d="M7 12.5L10 15.5L17 8.5" stroke="#0cc68f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#0cc68f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    <h2>ההודעה נשלחה בהצלחה!</h2>
+                    <p>תודה שפנית אלינו, נחזור אליך בהקדם.</p>
+                  </div>
+                `;
+              } else {
+                alert(url.searchParams.get('error') || 'אירעה שגיאה בשליחת הטופס. אנא נסו שוב.');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+              }
+            } else {
+              alert('אירעה שגיאה בשליחת הטופס. אנא נסו שוב.');
+              submitBtn.innerHTML = originalText;
+              submitBtn.disabled = false;
+            }
+          } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('שגיאה בשליחת הטופס. אנא נסו שוב מאוחר יותר.');
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+          }
+        });
+
+
+        // Parallax effect for hero
+        let ticking = false;
+        
+        function updateParallax() {
+          const scrolled = window.pageYOffset;
+          const hero = document.querySelector('.hero');
+          if (hero && scrolled < window.innerHeight) {
+            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+          }
+          ticking = false;
+        }
+
+        function requestParallaxUpdate() {
+          if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+          }
+        }
+
+        window.addEventListener('scroll', requestParallaxUpdate);
+
+        // Initialize hero animation
+        setTimeout(() => {
+          document.querySelector('.hero').style.opacity = '1';
+        }, 100);
+      });
