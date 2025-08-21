@@ -204,12 +204,46 @@ html(lang="he" dir="rtl")
         background-size: cover;           /* scale to fill */
         background-position: center;      /* center the image */
         background-repeat: no-repeat;     /* don't tile */
-        background-attachment: fixed;     /* optional: parallax-like */
         background-color: #222;           /* fallback color while image loads */
         display: flex;
         align-items: center;
         position: relative;
         overflow: hidden;
+      }
+
+      /* Mobile-specific hero background */
+      @media (max-width: 768px) {
+        .hero {
+          background-attachment: scroll;  /* Disable fixed on mobile */
+          background-size: cover;
+          background-position: center top; /* Better mobile positioning */
+          min-height: 100vh;
+          padding: 2rem 0;
+        }
+        
+        .hero-content {
+          padding: 0 1rem;
+          margin-top: 2rem;
+        }
+      }
+
+      /* Small mobile devices */
+      @media (max-width: 480px) {
+        .hero {
+          background-position: center center;
+          min-height: 100vh;
+        }
+        
+        .hero-content {
+          padding: 0 0.5rem;
+        }
+      }
+
+      /* Desktop parallax effect */
+      @media (min-width: 769px) {
+        .hero {
+          background-attachment: fixed;   /* Enable parallax only on desktop */
+        }
       }
 
       .hero::before {
