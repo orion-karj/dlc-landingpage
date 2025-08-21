@@ -210,7 +210,6 @@ html(lang="he" dir="rtl")
         align-items: center;
         position: relative;
         overflow: hidden;
-        opacity: 0; /* Start hidden for smooth fade-in */
       }
 
       .hero::before {
@@ -1825,14 +1824,10 @@ html(lang="he" dir="rtl")
           window.addEventListener('scroll', requestParallaxUpdate);
         }
 
-        // Initialize hero animation with smooth fade-in
+        // Initialize hero animation
         const hero = document.querySelector('.hero');
         if (hero) {
-          hero.style.opacity = '0';
-          hero.style.transition = 'opacity 0.8s ease-out';
-          
-          setTimeout(() => {
-            hero.style.opacity = '1';
-          }, 100);
+          // Ensure hero is visible
+          hero.style.opacity = '1';
         }
       });
