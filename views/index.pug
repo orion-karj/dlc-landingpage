@@ -197,6 +197,35 @@ html(lang="he" dir="rtl")
         width: 100%;
       }
 
+      /* Mobile navbar adjustments */
+      @media (max-width: 768px) {
+        .nav-link {
+          font-size: 0.75rem;
+        }
+        
+        .nav {
+          padding: 0.5rem 1rem;
+        }
+        
+        .nav-links {
+          gap: 0.75rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .nav-link {
+          font-size: 0.7rem;
+        }
+        
+        .nav {
+          padding: 0.4rem 0.8rem;
+        }
+        
+        .nav-links {
+          gap: 0.5rem;
+        }
+      }
+
       /* Hero Section */
       .hero {
         min-height: 100vh;
@@ -786,6 +815,7 @@ html(lang="he" dir="rtl")
         padding: 2rem;
         box-shadow: var(--shadow);
         transition: all 0.3s ease;
+        margin-bottom: 2.5rem;
       }
 
       .details-section:hover {
@@ -794,11 +824,15 @@ html(lang="he" dir="rtl")
         border-color: var(--gray-300);
       }
 
+      .details-section:last-child {
+        margin-bottom: 0;
+      }
+
       .details-section h4 {
         color: var(--primary);
         font-size: 1.2rem;
         font-weight: 600;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
         text-align: center;
         position: relative;
       }
@@ -806,7 +840,7 @@ html(lang="he" dir="rtl")
       .details-section h4::after {
         content: '';
         position: absolute;
-        bottom: -0.5rem;
+        bottom: -0.75rem;
         left: 50%;
         transform: translateX(-50%);
         width: 50px;
@@ -929,7 +963,7 @@ html(lang="he" dir="rtl")
       .requirements-grid,
       .goals-grid {
         display: grid;
-        gap: 0.75rem;
+        gap: 1rem;
       }
 
       .feature-item,
@@ -938,11 +972,18 @@ html(lang="he" dir="rtl")
         display: flex;
         align-items: center;
         gap: 0.75rem;
-        padding: 0.75rem 1rem;
+        padding: 1rem 1.25rem;
         background: var(--gray-50);
         border-radius: 12px;
         transition: all 0.2s ease;
         border: 1px solid transparent;
+        margin-bottom: 0.5rem;
+      }
+
+      .feature-item:last-child,
+      .requirement-item:last-child,
+      .goal-item:last-child {
+        margin-bottom: 0;
       }
 
       .feature-item:hover,
@@ -1491,6 +1532,38 @@ html(lang="he" dir="rtl")
         to { opacity: 1; transform: scale(1); }
       }
 
+      .pricing-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: var(--primary);
+        color: var(--white);
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* Mobile pricing badge adjustments */
+      @media (max-width: 768px) {
+        .pricing-badge {
+          top: 0.5rem;
+          right: 0.75rem;
+          font-size: 0.7rem;
+          padding: 0.3rem 0.6rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .pricing-badge {
+          top: 0.25rem;
+          right: 0.5rem;
+          font-size: 0.65rem;
+          padding: 0.25rem 0.5rem;
+        }
+      }
 
   body
     // Navigation
@@ -1911,7 +1984,7 @@ html(lang="he" dir="rtl")
 
             .activity-content
               h4 פעילויות גפ"ן – ספורט וערכים
-              p חוגים, סדנאות והרצאות המשלבים ספורט, חיזוק ביטחון עצמי, עבודת צוות וכלים לחיים – מותאם במיוחד לתקציב הגפ”ן.
+              p חוגים, סדנאות והרצאות המשלבים ספורט, חיזוק ביטחון עצמי, עבודת צוות וכלים לחיים – מותאם במיוחד לתקציב הגפ"ן.
 
 
     // Pricing Section
