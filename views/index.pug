@@ -743,6 +743,348 @@ html(lang="he" dir="rtl")
         line-height: 1.7;
       }
 
+      /* Pricing Section */
+      .pricing {
+        background: var(--white);
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        align-items: start;
+      }
+
+      .pricing-card.main-card {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        transition: all 0.3s ease;
+        overflow: hidden;
+        height: fit-content;
+      }
+
+      .pricing-card.main-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--primary);
+      }
+
+      .pricing-details {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .details-section {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: var(--shadow);
+        transition: all 0.3s ease;
+      }
+
+      .details-section:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--gray-300);
+      }
+
+      .details-section h4 {
+        color: var(--primary);
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        position: relative;
+      }
+
+      .details-section h4::after {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 2px;
+        background: var(--primary);
+        border-radius: 1px;
+      }
+
+      .pricing-header {
+        background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
+        padding: 2.5rem 2rem 2rem;
+        text-align: center;
+        border-bottom: 1px solid var(--gray-100);
+        position: relative;
+      }
+
+      .pricing-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: var(--primary);
+        color: var(--white);
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .pricing-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+      }
+
+      .pricing-subtitle {
+        font-size: 1rem;
+        color: var(--gray-600);
+        margin-bottom: 2rem;
+      }
+
+      .pricing-price {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .price-main {
+        display: flex;
+        align-items: baseline;
+        gap: 0.25rem;
+      }
+
+      .price-amount {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        line-height: 1;
+      }
+
+      .price-currency {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--gray-700);
+      }
+
+      .price-details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .price-period {
+        font-size: 0.9rem;
+        color: var(--gray-600);
+      }
+
+      .price-vat {
+        font-size: 0.8rem;
+        color: var(--gray-500);
+      }
+
+      .pricing-content {
+        padding: 2rem;
+      }
+
+      .content-section {
+        margin-bottom: 2rem;
+      }
+
+      .content-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .content-section h4 {
+        color: var(--primary);
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        text-align: center;
+        position: relative;
+      }
+
+      .content-section h4::after {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 2px;
+        background: var(--primary);
+        border-radius: 1px;
+      }
+
+      .feature-grid,
+      .requirements-grid,
+      .goals-grid {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .feature-item,
+      .requirement-item,
+      .goal-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        background: var(--gray-50);
+        border-radius: 12px;
+        transition: all 0.2s ease;
+        border: 1px solid transparent;
+      }
+
+      .feature-item:hover,
+      .requirement-item:hover,
+      .goal-item:hover {
+        background: var(--gray-100);
+        border-color: var(--gray-200);
+        transform: translateX(4px);
+      }
+
+      .feature-item svg,
+      .goal-item svg {
+        color: var(--success);
+        flex-shrink: 0;
+      }
+
+      .feature-item span,
+      .goal-item span {
+        color: var(--gray-700);
+        font-weight: 500;
+        font-size: 0.95rem;
+      }
+
+      .requirement-number {
+        background: var(--primary);
+        color: var(--white);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: 600;
+        flex-shrink: 0;
+      }
+
+      .requirement-item span:last-child {
+        color: var(--gray-700);
+        font-weight: 500;
+        font-size: 0.95rem;
+      }
+
+      .pricing-footer {
+        background: var(--gray-50);
+        padding: 2rem;
+        border-top: 1px solid var(--gray-200);
+      }
+
+      .pricing-notes {
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .notes-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .note-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: var(--gray-600);
+        font-size: 0.9rem;
+      }
+
+      .note-item svg {
+        color: var(--primary);
+        flex-shrink: 0;
+      }
+
+      .pricing-cta {
+        text-align: center;
+      }
+
+      .pricing-cta .cta-primary {
+        padding: 0.875rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 12px;
+        background: var(--gradient-primary);
+        border: none;
+        box-shadow: var(--shadow-md);
+      }
+
+      .pricing-cta .cta-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      /* Responsive pricing */
+      @media (max-width: 768px) {
+        .pricing-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+          margin: 0 1rem;
+        }
+
+        .pricing-card.main-card {
+          margin: 0;
+        }
+
+        .pricing-header {
+          padding: 2rem 1.5rem 1.5rem;
+        }
+
+        .pricing-content {
+          padding: 1.5rem;
+        }
+
+        .details-section {
+          padding: 1.5rem;
+        }
+
+        .pricing-title {
+          font-size: 1.5rem;
+        }
+
+        .price-amount {
+          font-size: 2rem;
+        }
+
+        .details-section h4 {
+          font-size: 1.1rem;
+        }
+
+        .feature-item,
+        .requirement-item,
+        .goal-item {
+          padding: 0.625rem 0.875rem;
+        }
+
+        .feature-item span,
+        .requirement-item span:last-child,
+        .goal-item span {
+          font-size: 0.9rem;
+        }
+      }
+
       /* Partnerships Section */
       .partnerships {
         background: var(--white);
@@ -932,6 +1274,30 @@ html(lang="he" dir="rtl")
         font-size: 1rem;
       }
 
+      .contact-link {
+        color: white;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      .contact-link:hover {
+        color: var(--primary);
+        transform: translateX(4px);
+      }
+
+      .whatsapp-link {
+        color: white !important;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .whatsapp-link:hover {
+        color: var(--primary) !important;
+        transform: translateX(4px);
+      }
+
       /* Footer */
       .footer {
         background: var(--gray-900);
@@ -1039,6 +1405,14 @@ html(lang="he" dir="rtl")
           gap: 2rem;
         }
 
+        .contact-link {
+          font-size: 0.9rem;
+        }
+
+        .whatsapp-link {
+          font-size: 0.9rem;
+        }
+
         .activity-card {
           grid-template-columns: 1fr;
           text-align: center;
@@ -1072,6 +1446,14 @@ html(lang="he" dir="rtl")
 
         .contact-form {
           padding: 2rem;
+        }
+
+        .contact-link {
+          font-size: 0.85rem;
+        }
+
+        .whatsapp-link {
+          font-size: 0.85rem;
         }
       }
 
@@ -1118,6 +1500,7 @@ html(lang="he" dir="rtl")
         li: a.nav-link(href="#about") אודותיי
         li: a.nav-link(href="#program") התוכנית
         li: a.nav-link(href="#activities") פעילויות
+        li: a.nav-link(href="#pricing") תוכניות ומחירים
         li: a.nav-link(href="#contact") צור קשר
 
     // Hero Section
@@ -1173,7 +1556,7 @@ html(lang="he" dir="rtl")
       .container
         .about-container
           .about-image-wrapper
-            img.about-image(src="/assets/pfp2.jpeg" alt="עמית קורקוש - מחנך ומאמן")
+            img.about-image(src="/assets/pfp3.jpeg" alt="עמית קורקוש - מחנך ומאמן")
           
           .about-content
             .section-badge
@@ -1190,9 +1573,6 @@ html(lang="he" dir="rtl")
               | אני מתמחה בעבודה עם ילדים בקשיים התנהגותיים וחברתיים, ומאמין באמונה שלמה 
               | כי כל ילד יכול להצליח בתנאים הנכונים. אני מזמין אתכם לקחת חלק באחת מהתוכניות שלנו – חוגים, הרצאות, סדנאות או שיתופי פעולה, ולגלות איך ספורט יכול להפוך לכלי לחיים.
             p.about-text
-              | מנצלים את תקציב הגפ”ן – ומעניקים לתלמידים חוויה עם ערך לחיים! 
-              | משרד החינוך מעניק לכל בית ספר תקציב במסגרת תוכנית הגפ”ן, שמיועד לפעילויות העשרה ייחודיות. 
-              | זוהי ההזדמנות שלכם להזמין פעילות שמשלבת ספורט, ערכים וכלים לחיים – בדיוק מה שהתלמידים שלכם צריכים.
             .about-stats
               .stat-item
                 span.stat-number 10+
@@ -1222,7 +1602,7 @@ html(lang="he" dir="rtl")
         h2.section-title תוכנית "דרך לחיים" – העצמה דרך ספורט
         
         p.about-text(style="text-align: center; margin-bottom: 3rem;")
-          | תוכנית חינוכית-ספורטיבית שנתית לילדים, המיועדת לחיזוק הביטחון העצמי, פיתוח כישורי חיים, שיפור מיומנויות תקשורת והתמודדות עם אתגרים – דרך פעילות גופנית חווייתית. החזון: לאמן ילדים לא רק בגוף – אלא גם בלב ובשכל. לתת להם כלים שילוו אותם לכל החיים.
+          | תוכנית ייחודית המשלבת כדורגל מקצועי יחד עם העצמה אישית ועלים לחיים. כי כל ילד יכול לגדול עם בטחון עצמי, משמעת ויכולת אמיתית להצליח - במגרש ובחיים.
         
         .program-grid
           .program-card
@@ -1352,7 +1732,10 @@ html(lang="he" dir="rtl")
                   line(x1="8" y1="2" x2="8" y2="6")
                   line(x1="3" y1="10" x2="21" y2="10")
                 h3 מבנה התוכנית
-              p מפגש שבועי אחד לכל קבוצה, משך כל מפגש: 45 דקות, מסגרת שנתית (ספטמבר–יוני). ניתן לשלב בבתי ספר, חוגי אחה"צ או תוכניות צהרון
+                p משך: 3 חודשים (אפשרות להתאמה אישית לאורך התוכנית) 
+                p תדירות: 3 אימונים אישיים בשבוע 
+                p עלות: 250 ₪ לאימון
+                p אורך כל אימון: 45 דקות
             
             .summary-item
               h5
@@ -1531,6 +1914,126 @@ html(lang="he" dir="rtl")
               p חוגים, סדנאות והרצאות המשלבים ספורט, חיזוק ביטחון עצמי, עבודת צוות וכלים לחיים – מותאם במיוחד לתקציב הגפ”ן.
 
 
+    // Pricing Section
+    section.section.pricing#pricing
+      .container
+        .section-badge
+          span תוכניות ומחירים
+          svg(xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512")
+            path(
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="32"
+              d="M435.25 48h-122.9a14.46 14.46 0 0 0-10.2 4.2L56.45 297.9a28.85 28.85 0 0 0 0 40.7l117 117a28.85 28.85 0 0 0 40.7 0L459.75 210a14.46 14.46 0 0 0 4.2-10.2v-123a28.66 28.66 0 0 0-28.7-28.8Z"
+            )
+            path(
+              fill="currentColor"
+              d="M384 160a32 32 0 1 1 32-32a32 32 0 0 1-32 32Z"
+            )
+
+            path(d="M12 2L13.09 8.26L22 9.27L16 14.14L17.18 21.02L12 17.77L6.82 21.02L8 14.14L2 9.27L10.91 8.26L12 2Z")
+        
+        h2.section-title תוכנית העצמה - דרך לחיים
+        
+        .pricing-grid
+          .pricing-card.main-card
+            .pricing-header
+              .pricing-badge תוכנית מומלצת
+              .pricing-title תוכנית העצמה
+              .pricing-subtitle תוכנית מקיפה להעצמה דרך ספורט
+              .pricing-price
+                .price-main
+                  span.price-amount 250
+                  span.price-currency ש״ח
+                .price-details
+                  span.price-period למפגש
+                  span.price-vat כולל מע״מ
+            
+            .pricing-content
+              .content-section
+                h4 פרטי התוכנית
+                .feature-list
+                  .feature-item
+                    svg(width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+                      path(d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z")
+                    span אורך התוכנית: 3 חודשים
+                   
+                  .feature-item
+                    svg(width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+                      path(d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z")
+                    span 3 מפגשים בשבוע
+                   
+                  .feature-item
+                    svg(width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+                      path(d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z")
+                    span 45 דק׳ למפגש
+                   
+                  .feature-item
+                    svg(width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+                      path(d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z")
+                    span דגש על כדורגל והעצמה
+              
+              .pricing-cta
+                a.cta-primary(href="#contact" style="color: white") התחל עכשיו
+          
+          .pricing-details
+            .details-section
+              h4 דרישות התוכנית
+              .requirements-grid
+                .requirement-item
+                  span.requirement-number 1
+                  span קשר רציף עם המחנך
+                .requirement-item
+                  span.requirement-number 2
+                  span עידכון יומי עם ההורים
+                .requirement-item
+                  span.requirement-number 3
+                  span עמידה בזמנים
+                .requirement-item
+                  span.requirement-number 4
+                  span ניידות (בחלק מהמפגשים)
+                .requirement-item
+                  span.requirement-number 5
+                  span הצבת יעדים
+            
+            .details-section
+              h4 מטרות התוכנית
+              .goals-grid
+                .goal-item
+                  svg(width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+                    path(d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z")
+                  span העצמת הביטחון
+                .goal-item
+                  svg(width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+                    path(d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z")
+                  span פיתוח יכולות אישיות וחברתיות
+                .goal-item
+                  svg(width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+                    path(d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z")
+                  span חיזוק הדימוי העצמי
+                .goal-item
+                  svg(width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+                    path(d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z")
+                  span שיפור יכולות ספורטיביות
+                .goal-item
+                  svg(width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+                    path(d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z")
+                  span קבלת הצלחה וכישלון
+            
+            .details-section
+              h4 הערות חשובות
+              .notes-grid
+                .note-item
+                  svg(width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+                    path(d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z")
+                  span התוכנית תתקיים בחודשים שנבחר ביחד
+                .note-item
+                  svg(width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+                    path(d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z")
+                  span ניתן לבחור את אורך התוכנית
+
     // Partnerships Section
     section.section.partnerships#partnerships
       .container
@@ -1600,7 +2103,7 @@ html(lang="he" dir="rtl")
                     path(d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z")
                 .contact-details
                   h4 טלפון
-                  p 054-4927583
+                  a.contact-link(href="tel:054-4927583") 054-4927583
               
               .contact-item
                 .contact-icon
@@ -1609,7 +2112,20 @@ html(lang="he" dir="rtl")
                     polyline(points="22,6 12,13 2,6")
                 .contact-details
                   h4 אימייל
-                  p amitkorkus88@gmail.com
+                  a.contact-link(href="mailto:amitkorkus88@gmail.com") amitkorkus88@gmail.com
+              
+              .contact-item
+                .contact-icon
+                  svg(xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 16 16")
+                    path(
+                      fill="currentColor"
+                      d="M13.641 2.325A7.869 7.869 0 0 0 8.032 0C3.663 0 .107 3.556.107 7.928c0 1.397.366 2.763 1.059 3.963L.041 16l4.203-1.103a7.929 7.929 0 0 0 3.787.966h.003c4.369 0 7.928-3.556 7.928-7.928a7.887 7.887 0 0 0-2.322-5.609zm-5.607 12.2a6.583 6.583 0 0 1-3.356-.919l-.241-.144l-2.494.653l.666-2.431l-.156-.25a6.537 6.537 0 0 1-1.009-3.506a6.599 6.599 0 0 1 6.594-6.591c1.759 0 3.416.688 4.659 1.931a6.554 6.554 0 0 1 1.928 4.662c-.003 3.637-2.959 6.594-6.591 6.594zm3.613-4.937c-.197-.1-1.172-.578-1.353-.644s-.313-.1-.447.1c-.131.197-.512.644-.628.778c-.116.131-.231.15-.428.05s-.838-.309-1.594-.984c-.588-.525-.987-1.175-1.103-1.372s-.013-.306.088-.403c.091-.088.197-.231.297-.347s.131-.197.197-.331c.066-.131.034-.247-.016-.347s-.447-1.075-.609-1.472c-.159-.388-.325-.334-.447-.341c-.116-.006-.247-.006-.378-.006s-.347.05-.528.247c-.181.197-.694.678-.694 1.653s.709 1.916.809 2.05c.1.131 1.397 2.134 3.384 2.991c.472.203.841.325 1.128.419c.475.15.906.128 1.247.078c.381-.056 1.172-.478 1.338-.941s.166-.859.116-.941c-.047-.088-.178-.137-.378-.238z"
+                    )
+
+
+                .contact-details
+                  h4 וואטסאפ
+                  a.contact-link.whatsapp-link(href="https://wa.me/972544927583" target="_blank") לחצו כאן 
               
               .contact-item
                 .contact-icon
@@ -1618,7 +2134,7 @@ html(lang="he" dir="rtl")
                     circle(cx="12" cy="10" r="3")
                 .contact-details
                   h4 מיקום
-                  p דרום השרון, ישראל
+                  p כפר סבא , ישראל
 
     // Footer
     footer.footer
@@ -1651,6 +2167,12 @@ html(lang="he" dir="rtl")
         document.querySelectorAll('.section').forEach(section => {
           observer.observe(section);
         });
+
+        // Observe pricing section specifically for enhanced animations
+        const pricingSection = document.querySelector('.pricing');
+        if (pricingSection) {
+          observer.observe(pricingSection);
+        }
 
         // Enhanced observer for cards with staggered animations
         const cardObserver = new IntersectionObserver((entries) => {
